@@ -27,7 +27,7 @@ class BaseModel():
     def to_dict(self):
         """
         Public instance methods that
-        returns a dictionary containing all keys/values
+        returns a dictionary containing all keys/values.
         """
         dic = self.__dict__.copy()
         dic["__class__"] = self.__class__.__name__
