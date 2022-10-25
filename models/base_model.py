@@ -8,10 +8,17 @@ import uuid
 
 class BaseModel():
 
-    def __init__(self):
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "created_at" or "update_at":
+                    setattr(self, key, datetime.fromisoformat(value))
+                elif key != "__class__":
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         return "[{}] ({}) {}".format(self.__class__.__name__,
@@ -29,8 +36,8 @@ class BaseModel():
         Public instance methods that
         returns a dictionary containing all keys/values.
         """
-        dic = self.__dict__.copy()
-        dic["__class__"] = self.__class__.__name__
-        dic["created_at"] = dic["created_at"].isoformat()
-        dic["update_at"] = dic["updated_at"].isoformat()
-        return dic
+        dictionary = self.__dict__.copy()
+        dictionary["__class__"] = self.__class__.__name__
+        dictionary["created_at"] = dictionary["created_at"].isoformat()
+        dictionary["update_at"] = dictionary["updated_at"].isoformat()
+        return dictionary
