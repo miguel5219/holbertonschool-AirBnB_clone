@@ -31,6 +31,6 @@ class BaseModel():
         """
         dic = self.__dict__.copy()
         dic["__class__"] = self.__class__.__name__
-        dic["created_at"] = dic.created_at.isoformat()
-        dic["update_at"] = dic.updated_at.isoformat()
+        dic["created_at"] = dic["created_at"].isoformat()
+        dic["update_at"] = dic["updated_at"].isoformat()
         return dic
