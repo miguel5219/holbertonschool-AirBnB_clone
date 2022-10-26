@@ -4,6 +4,7 @@
 """
 
 import json
+from os.path import exists
 
 class FileStorage():
     """class FileStorage that serializes instances to a JSON file
@@ -50,3 +51,5 @@ class FileStorage():
 
                     for i, j in dictionary.items():
                         self.__objects[i] = eval(f"{j.get('__class__')}(**j")
+            except Exception:
+                pass
