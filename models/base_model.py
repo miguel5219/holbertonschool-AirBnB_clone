@@ -11,7 +11,7 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                    setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -34,9 +34,7 @@ class BaseModel():
         returns a dictionary containing all keys/values.
         """
         dictionary = self.__dict__.copy()
-        for k in  dictionary.keys():
-            if k == "created_at":
-                dictionary[k] = dictionary[k].isoformat()
-            if k == "update_at":
-                dictionary[k] = dictionary[k].isoformat()
+        dictionary["__class__"] = self.__class__.__name__
+        dictionary["created_at"] = dictionary["created_at"].isoformat()
+        dictionary["update_at"] = dictionary["updated_at"].isoformat()
         return dictionary
