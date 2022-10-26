@@ -2,7 +2,7 @@
 """ class base """
 
 
-from datetime import datetime
+import datetime
 from uuid import uuid4
 
 
@@ -12,24 +12,23 @@ class BaseModel():
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or  key == "update_at":
-                    setattr(self, key, datetime.fromisoformat(value))
+                    setattr(self, key, datetime.datetime.fromisoformat(value))
                 if key != "__class__":
                     setattr(self, key, value)
         else:
             self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
-        return "[{}] ({}) {}".format(self.__class__.__name__,
-                                     self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
         updates the public instance attribute
         updated_at with the current datetime
         """
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
         """
@@ -39,5 +38,5 @@ class BaseModel():
         dictionary = self.__dict__.copy()
         dictionary["__class__"] = self.__class__.__name__
         dictionary["created_at"] = dictionary["created_at"].isoformat()
-        dictionary["update_at"] = dictionary["updated_at"].isoformat()
+        dictionary["updated_at"] = dictionary["updated_at"].isoformat()
         return dictionary
