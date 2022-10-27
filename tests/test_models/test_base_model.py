@@ -13,4 +13,4 @@ class TestsBaseModel(unittest.TestCase):
         bm = myModel.update_at
         bm.save()
         myModel1 = bm.update_at
-        self.assertNotEqual(myModel, myModel)
+        self.assertNotEqual(myModel, myModel1)
