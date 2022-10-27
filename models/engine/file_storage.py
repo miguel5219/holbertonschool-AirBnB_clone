@@ -16,7 +16,7 @@ class FileStorage():
         __objects: dictionary that will store all
         objects by <class name>.id
     """
-    __file_path = ""
+    __file_path = file.json
     __objects = {}
 
     def all(self):
@@ -35,13 +35,10 @@ class FileStorage():
             method that serializes __objects to
             the JSON file
         """
-        save_dict = {}
 
-        for key in self.__objects.keys():
-            save_dict[key] = self.__objects.get(key).to_dict()
-
-        with open(FileStorage.__file_path, mode="w", encoding="utf-8") as f:
-            json.dump(save_dict, f)
+        with open(FileStorage.__file_path, "w+") as f:
+            new_dict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            json.dump(new_dict, f)
 
     def reload(self):
         """
