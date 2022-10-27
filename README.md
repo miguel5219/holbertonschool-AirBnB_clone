@@ -23,10 +23,10 @@ The console is the first segment of the AirBnB project at **Holberton School**. 
 #### How to use it?
 | Command | Yes/No | Description |
 | :------------: | :------------: | :------------: |
-| all  | :fa-check-square:  | Command that prints all string representation of all instances based or not on the class name Usage: - To show all instances of all classes: all - To show all instances of a specific class: all <class_name> |
-| create | :fa-check-square:  | Command that creates a new instance of a class, saves it to a JSON file and prints the id. Usage: create <class_name> |
-| destroy | :fa-check-square: | Command that deletes an instance based on the class nameand id. It saves the change into the JSON file. Usage: destroy <class_name> <object_id> |
-| EOF | :fa-check-square: | Command to exit the program  |
-| help  | :fa-check-square:  | It shows the docummented commands available in the console |
-| quit | :fa-check-square: | Command to exit the program |
-| show | :fa-check-square:  | Command that prints the string representation of an instance based on the class name and id. Usage: show <class_name> <object_id> |
+| all  | ✅  | Command that prints all string representation of all instances based or not on the class name Usage: - To show all instances of all classes: all - To show all instances of a specific class: all <class_name> |
+| create | ✅ | Command that creates a new instance of a class, saves it to a JSON file and prints the id. Usage: create <class_name> |
+| destroy | ✅ | Command that deletes an instance based on the class nameand id. It saves the change into the JSON file. Usage: destroy <class_name> <object_id> |
+| EOF | ✅ | Command to exit the program  |
+| help  | ✅  | It shows the docummented commands available in the console |
+| quit | ✅ | Command to exit the program |
+| show | ✅  | Command that prints the string representation of an instance based on the class name and id. Usage: show <class_name> <object_id> |
