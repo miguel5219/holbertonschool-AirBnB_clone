@@ -16,19 +16,19 @@ class FileStorage():
         __objects: dictionary that will store all
         objects by <class name>.id
     """
-    __file_path = file.json
+    __file_path = 'file.json'
     __objects = {}
 
     def all(self):
         """ method that returns the dictionary __objects"""
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """
         method that set s the obj in __objects with key
         <obj class name>.id
         """
-        self.__objects[f"{obj.__class__.__name__}.{obj.id}"] = obj
+        FileStorage.__objects[f"{obj.__class__.__name__}.{obj.id}"] = obj
 
     def save(self):
         """
