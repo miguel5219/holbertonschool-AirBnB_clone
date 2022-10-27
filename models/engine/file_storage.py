@@ -5,7 +5,7 @@
 
 import json
 from os.path import exists
-from models.base_model import BaseModel
+
 
 class FileStorage():
     """class FileStorage that serializes instances to a JSON file
@@ -44,6 +44,8 @@ class FileStorage():
         """
         method that deserialize the JSON file to __objects
         """
+        from models.base_model import BaseModel
+
         if exists(self.__file_path):
             try:
                 with open(self.__file_path, mode="r", encoding="utf-8") as f:
