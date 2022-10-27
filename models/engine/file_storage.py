@@ -50,6 +50,7 @@ class FileStorage():
             return
         try:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+                json_str = f.read()
                 dictionary = json.loads(f)
 
             for i, j in dictionary.items:
