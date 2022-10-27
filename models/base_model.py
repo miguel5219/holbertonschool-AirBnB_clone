@@ -5,8 +5,6 @@
 import datetime
 from uuid import uuid4
 import models
-from models.engine.file_storage import FileStorage
-import json
 
 
 class BaseModel():
@@ -32,9 +30,7 @@ class BaseModel():
         updates the public instance attribute
         updated_at with the current datetime
         """
-        with open(FileStorage.__file_path, "w+") as f:
-            new_dict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
-            json.dump(new_dict, f)
+        self.updated_at = datetime.datetime.now()
         models.storage.save()
 
     def to_dict(self):
