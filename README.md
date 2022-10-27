@@ -22,7 +22,7 @@ The console is the first segment of the AirBnB project at **Holberton School**. 
 
 #### How to use it?
 | Command | Yes/No | Description |
-| :------------: | :------------: | :------------: |
+| :------------: | :------------: | ------------ |
 | all  | ✅  | Command that prints all string representation of all instances based or not on the class name Usage: - To show all instances of all classes: all - To show all instances of a specific class: all <class_name> |
 | create | ✅ | Command that creates a new instance of a class, saves it to a JSON file and prints the id. Usage: create <class_name> |
 | destroy | ✅ | Command that deletes an instance based on the class nameand id. It saves the change into the JSON file. Usage: destroy <class_name> <object_id> |
