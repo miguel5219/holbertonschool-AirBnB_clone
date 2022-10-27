@@ -85,5 +85,5 @@ $ ./console.py
 
 ## Authors
 ***
-**[Jhonatan Ramos](https://github.com/TATTANRAM0X "Jhonatan Ramos")**
-**[Miguel Moreno](https://github.com/miguel5219 "Miguel Moreno")**
+#### **[Jhonatan Ramos](https://github.com/TATTANRAM0X "Jhonatan Ramos")**
+#### **[Miguel Moreno](https://github.com/miguel5219 "Miguel Moreno")**
