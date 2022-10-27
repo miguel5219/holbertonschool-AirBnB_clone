@@ -2,24 +2,28 @@
 """ class base """
 
 
-import datetime
-from uuid import uuid4
+from datetime import datetime
+import uuid
 import models
 
 
 class BaseModel():
 
     def __init__(self, *args, **kwargs):
-        if kwargs:
+        if not kwargs == {}:
             for key, value in kwargs.items():
-                if key in ["created_at", "update_at"]:
-                    setattr(self, key, datetime.datetime.fromisoformat(value))
                 if key != "__class__":
                     setattr(self, key, value)
+
+            self.created_at = datetime.strptime(
+                self.created_at, '%Y-%m-%dT%H:%M:%S.%f')
+            self.updated_at = datetime.strptime(
+                self.updated_at, '%Y-%m-%dT%H:%M:%S.%f')
+
         else:
-            self.id = str(uuid4())
-            self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
         models.storage.new(self)
 
     def __str__(self):
@@ -30,7 +34,7 @@ class BaseModel():
         updates the public instance attribute
         updated_at with the current datetime
         """
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
