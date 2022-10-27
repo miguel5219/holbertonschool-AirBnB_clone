@@ -46,14 +46,17 @@ class FileStorage():
         """
         from models.base_model import BaseModel
 
+        classes= {
+            'BaseModel': BaseModel
+        }
+
         if not os.path.isfile(FileStorage.__file_path):
             return
         try:
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+            with open(FileStorage.__file_path, "r") as f:
                 dictionary = json.loads(f)
 
-            for i, j in dictionary.items:
-                obj = eval(j["__class__"])(**j)
-                FileStorage.__objects[i] = obj
-        except Exception:
+                for i, j in dictionary.items():
+                    self.all()[i] = classes[j['__class__']](**j)
+        except FileNotFoundError:
             pass
