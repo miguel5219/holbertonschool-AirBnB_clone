@@ -4,7 +4,7 @@
 """
 
 import json
-from os.path import exists
+import os
 
 
 class FileStorage():
@@ -46,13 +46,14 @@ class FileStorage():
         """
         from models.base_model import BaseModel
 
-        if exists(self.__file_path):
-            try:
-                with open(self.__file_path, mode="r", encoding="utf-8") as f:
-                    str_json = f.read()
-                    dictionary = json.loads(str_json)
+        if not os.path.isfile(FileStorage.__file_path):
+            return
+        try:
+            with open(FileStorage.__file_path, mode="r", encoding="utf-8") as f:
+                dictionary = json.loads(f)
 
-                    for i, j in dictionary.items():
-                        self.__objects[i] = eval(f"{j.get('__class__')}(**j")
-            except Exception:
-                pass
+            for i, j in dictionary.items():
+                obj = eval(j["__class__"])(**j)
+                FileStorage.__objects[i] = obj
+        except Exception:
+            pass
