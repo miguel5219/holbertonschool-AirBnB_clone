@@ -12,7 +12,7 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
-                if key == "created_at" or  key == "update_at":
+                if key in ["created_at", "update_at"]:
                     setattr(self, key, datetime.datetime.fromisoformat(value))
                 if key != "__class__":
                     setattr(self, key, value)
@@ -20,7 +20,7 @@ class BaseModel():
             self.id = str(uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
-            models.storage.new(self)
+        models.storage.new(self)
 
     def __str__(self):
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
