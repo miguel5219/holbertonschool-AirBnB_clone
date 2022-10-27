@@ -53,6 +53,7 @@ class FileStorage():
         if not os.path.isfile(FileStorage.__file_path):
             return
         try:
+            dictionary = {}
             with open(FileStorage.__file_path, "r") as f:
                 dictionary = json.loads(f)
 
