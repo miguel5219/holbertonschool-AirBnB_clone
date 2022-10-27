@@ -49,10 +49,10 @@ class FileStorage():
         if not os.path.isfile(FileStorage.__file_path):
             return
         try:
-            with open(FileStorage.__file_path, mode="r", encoding="utf-8") as f:
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 dictionary = json.loads(f)
 
-            for i, j in dictionary.items():
+            for i, j in dictionary.items:
                 obj = eval(j["__class__"])(**j)
                 FileStorage.__objects[i] = obj
         except Exception:
