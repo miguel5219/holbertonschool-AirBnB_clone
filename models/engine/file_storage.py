@@ -44,14 +44,6 @@ class FileStorage():
         """
         method that deserialize the JSON file to __objects
         """
-        from models.base_model import BaseModel
-
-        classes= {
-            'BaseModel': BaseModel
-        }
-
-        if not os.path.isfile(FileStorage.__file_path):
-            return
         try:
             dictionary = {}
             with open(FileStorage.__file_path, "r") as f:
