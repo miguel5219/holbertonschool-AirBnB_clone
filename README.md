@@ -14,3 +14,9 @@ The console is the first segment of the AirBnB project at **Holberton School**. 
 - Update attributes of an object
 - Destroy an object
 
+####  Installation process
+- Clone this repository: [Click here](https://github.com/TATTANRAM0X/holbertonschool-AirBnB_clone "Install")
+- Access AirBnb directory: `cd holbertonschool-AirBnB_clone`
+- Run hbnb(interactively): `./console` and enter command
+- Run hbnb(non-interactively): `echo "<command>" | ./console.py`
+
