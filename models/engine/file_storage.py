@@ -47,7 +47,7 @@ class FileStorage:
         method that deserialize the JSON file to __objects
         """
         if os.path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, "r", enconding="utf-8") as f:
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 dictionary = f.read()
 
             py_obj = json.loads(dictionary)
