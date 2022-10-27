@@ -55,7 +55,7 @@ class FileStorage():
         try:
             dictionary = {}
             with open(FileStorage.__file_path, "r") as f:
-                dictionary = json.loads(f)
+                dictionary = json.load(f)
 
                 for i, j in dictionary.items():
                     self.all()[i] = classes[j['__class__']](**j)
