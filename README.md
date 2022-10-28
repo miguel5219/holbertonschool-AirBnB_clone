@@ -73,7 +73,7 @@ $ ./console.py
 
 ```sh
 $ ./console.py
-(hbnb) update User b9030dc9-684b-4a46-b07b-80dbfdaa2520 name "Cuchufli Antonio"
+(hbnb) update User b9030dc9-684b-4a46-b07b-80dbfdaa2520 name "Jhonatan Ramos"
 ```
 
 #### To destroy an object
