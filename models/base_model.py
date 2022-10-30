@@ -4,11 +4,11 @@
 
 from datetime import datetime
 import uuid
-import models import storage
+from models import storage
 
 
 class BaseModel():
-''' Class BaseModel that defines all common attributes/methods for other classes '''
+    ''' Class BaseModel that defines all common attributes/methods for other classes '''
     def __init__(self, *args, **kwargs):
         if kwargs is None and len(kwargs) > 0:
             for key, value in kwargs.items():
