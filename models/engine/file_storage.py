@@ -5,7 +5,6 @@
 
 import json
 import os.path
-from models.base_model import BaseModel
 
 
 class FileStorage:
