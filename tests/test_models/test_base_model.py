@@ -4,31 +4,41 @@
 
 from models.base_model import BaseModel
 import unittest
+import os
+from datetime import datetime
 
 
 class TestsBaseModel(unittest.TestCase):
+
+    def test_save(self):
+        b_1 = BaseModel()
+        b_1.save()
+        self.assertFalse(b_1.created_at == b_1.updated_at)
 
     def setUp(self):
         self.instanceOne = BaseModel()
         self.instanceTwo = BaseModel()
 
-    def testBaseModel(self):
-        myModelOne = self.instanceOne.updated_at
-        self.instanceOne.save()
-        myModelTwo = self.instanceOne.updated_at
-        self.assertNotEqual(myModelOne, myModelTwo)
+    def test_created_at(self):
+        b_1 = BaseModel()
+        self.assertTrue(type(b_1.created_at) == datetime)
 
     def testId(self):
-        self.assertNotEqual(self.instanceOne.id, self.instanceTwo.id)
+        b_1 = BaseModel()
+        b_2 = BaseModel()
+        self.assertFalse(b_1.id == b_2.id)
 
     def testDict(self):
-        self.assertIn("id", self.instanceOne.to_dict())
-        self.assertIn("__class__", self.instanceOne.to_dict())
-        self.assertIn("created_at", self.instanceOne.to_dict())
-        self.assertIn("updated_at", self.instanceOne.to_dict())
+        b_1 = BaseModel()
+        dictionary = {'id': b_1.id, 'created_at': b_1.created_at.isoformat(),
+                      'update_at': b_1.updated_at.isoformat(),
+                      '__class__': b_1.__class__.__name__}
+        self.assertEqual(dictionary, b_1.to_dict())
 
     def testStr(self):
-        self.assertIsInstance(self.instanceOne.__str__(), str)
-        self.assertIn(self.instanceOne.id, self.instanceOne.__str__())
-        self.assertIn(type(self.instanceOne).__name__,
-                        self.instanceOne.__str__())
+        b_1 = BaseModel()
+        string_aux = f"[BaseModel] ({b_1.id}) {b_1.__dict__}"
+        self.assertEqual(string_aux, str(b_1))
+
+if __name__ == '__main__':
+    unittest.main()
