@@ -29,7 +29,7 @@ class FileStorage:
         method that set s the obj in __objects with key
         <obj class name>.id
         """
-        key = obj.__class__.__name__ + "." + obj.id
+        key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -37,20 +37,18 @@ class FileStorage:
             method that serializes __objects to
             the JSON file
         """
+        new_dict = {k: v.to_dict() for k, v in self.all().items()}
         with open(FileStorage.__file_path, mode="w", encoding="UFT-8") as f:
-            new_dict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
-            json.dumps(new_dict, f, indent=4)
+            f.write(json.dumps(new_dict))
 
     def reload(self):
         """
         method that deserialize the JSON file to __objects
         """
-        from models.base_model import BaseModel
-        if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path) as f:
-                dictionary = json.load(f)
-                for k, v in dictionary.items():
-                    obj = eval(v["__class__"])(**v)
-                    FileStorage.__objects[k] = obj
-        else:
-            return
+        if os.path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+                dictionary = f.read()
+
+            py_obj = json.loads(dictionary)
+            FileStorage.__objects = {k: eval(f"{v['__class__']}(**{v})")
+                                     for k, v in py_obj.items()}
