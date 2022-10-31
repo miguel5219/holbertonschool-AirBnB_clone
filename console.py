@@ -12,7 +12,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         return True
 
-    def do_quit(self, arg):
+    def do_quit(self, hbnb):
         return True
 
 if __name__ == '__main__':
