@@ -50,7 +50,7 @@ class FileStorage:
             with open(FileStorage.__file_path) as f:
                 dictionary = json.load(f)
                 for k, v in dictionary.items():
-                    obj = eval(v["__class__"])(**V)
+                    obj = eval(v["__class__"])(**v)
                     FileStorage.__objects[k] = obj
         else:
             return
