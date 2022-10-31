@@ -9,10 +9,12 @@ import models
 class HBNBCommand(cmd.Cmd):
     """ class to implements a basic prompt to handle objects"""
 
+    prompt = '(hbnb)'
+
     def do_EOF(self, line):
         return True
 
-    def do_quit(self, hbnb):
+    def do_quit(self, arg):
         return True
 
 if __name__ == '__main__':
