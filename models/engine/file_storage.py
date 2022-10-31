@@ -38,7 +38,7 @@ class FileStorage:
             the JSON file
         """
         new_dict = {k: v.to_dict() for k, v in self.all().items()}
-        with open(FileStorage.__file_path, mode="w", encoding="UFT-8") as f:
+        with open(FileStorage.__file_path, mode="w", encoding="UTF-8") as f:
             f.write(json.dumps(new_dict))
 
     def reload(self):
@@ -46,7 +46,7 @@ class FileStorage:
         method that deserialize the JSON file to __objects
         """
         if os.path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+            with open(FileStorage.__file_path, "r", encoding="UTF-8") as f:
                 dictionary = f.read()
 
             py_obj = json.loads(dictionary)
