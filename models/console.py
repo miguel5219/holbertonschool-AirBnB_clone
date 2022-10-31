@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""modulecontains the class HBNBCommand"""
+"""module contains the class HBNBCommand"""
 
 import cmd
 import models.base_model
