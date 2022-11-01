@@ -11,6 +11,32 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb)'
 
+    cls_id = {
+        "BaseModel": "base_model"
+    }
+
+    def for_create(self, line):
+        """ created a new instance of BaseModel """
+
+        read_line = line.split(" ")
+        if  read_line == ['']:
+            print("** class name missing **")
+        elif read_line[0] not in HBNBCommand.cls_id.keys():
+            print("** class doesn't exist **")
+        else:
+            mod = HBNBCommand.cls_id[read_line[0]]
+            b_1 = eval(
+                f"models.{mod}.{read_line[0]}()")
+            b_1.save()
+            print(b_1.id)
+
+    def for_show(self, line):
+
+        read_line = line.split(" ")
+        if read_line == ['']:
+            print("** class name missing **")
+            return
+
     def for_EOF(self, line):
         return True
 
