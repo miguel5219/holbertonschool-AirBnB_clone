@@ -83,19 +83,29 @@ class HBNBCommand(cmd.Cmd):
                     list_print.append(str(val))
             print(list_print)
 
+    def for_update(self, line):
 
+        read_line = line.split(' ')
+        if read_line == ['']:
+            print("** class name missing **")
+            return
+        elif read_line[0] not in HBNBCommand.cls_id.keys():
+            print("** class doesn't exist **")
+            return
+        elif len(read_line) < 2:
+            print("** instance id missing **")
+            return
 
-
-
-
-
-
-
-
-
-
-
-
+        conc = read_line[0] + "." + read_line[1]
+        if not models.storage._FileStorage__objects.get(conc):
+            print("** no instance found **")
+        elif len(read_line) < 3:
+            print("** attribute name missing **")
+        elif len(read_line) < 4:
+            print("** value missing **")
+        else:
+            obj = models.storage._FileStorage__objects[conc]
+            setattr(obj, read_line[2], eval(read_line[3]))
 
     def for_EOF(self, line):
         return True
