@@ -70,6 +70,22 @@ class HBNBCommand(cmd.Cmd):
             del models.storage._FileStorage__objects[conc]
             models.storage.save()
 
+    def for_all(self, line):
+
+        read_line = line.split(" ")
+        if read_line[0] not in [*HBNBCommand.cls.id.keys(), '']:
+            print("** class doesn'texist **")
+        else:
+            list_print = []
+            for val in models.storage._FileStorage__objects.values():
+                if (val.__class__.__name__ == read_line[0] or
+                        read_line == ['']):
+                    list_print.append(str(val))
+            print(list_print)
+
+
+
+
 
 
 
