@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
     def for_all(self, line):
 
         read_line = line.split(" ")
-        if read_line[0] not in [*HBNBCommand.cls.id.keys(), '']:
+        if read_line[0] not in [*HBNBCommand.cls_id.keys(), '']:
             print("** class doesn'texist **")
         else:
             list_print = []
@@ -107,6 +107,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             obj = models.storage._FileStorage__objects[conc]
             setattr(obj, read_line[2], eval(read_line[3]))
+
+
 
     def for_EOF(self, line):
         return True
