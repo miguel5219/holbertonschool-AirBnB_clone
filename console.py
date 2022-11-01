@@ -4,6 +4,7 @@
 import cmd
 import models.base_model
 import models
+import re
 
 
 class HBNBCommand(cmd.Cmd):
