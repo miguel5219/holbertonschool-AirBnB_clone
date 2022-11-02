@@ -108,7 +108,44 @@ class HBNBCommand(cmd.Cmd):
             obj = models.storage._FileStorage__objects[conc]
             setattr(obj, read_line[2], eval(read_line[3]))
 
+    def default(self, *args):
+        args_splitted = args[0].split('.')
+        if len(args_splitted) < 2:
+            print("** incorrect command **")
+            return
 
+        if args_splitted[1] == "all()":
+            self.for_all(f'{args_splitted[0]}')
+        elif args_splitted[1] == "count()":
+
+            clss = models.storage._FileStorage__objects.items()
+            print(len([k for k, v in clss
+                       if v.__class__.__name__ == args_splitted[0]]))
+        elif re.search("show()",args_splitted[1]):
+            obj_id = args_splitted[1].replace("show(", "")[:-1]
+            self.for_show(args_splitted[0] + " " + obj_id)
+
+        elif re.search("destroy()", args_splitted[1]):
+            obj_id = args_splitted[1].replace("destroy(", "")[:-1]
+            self.for_destroy(args_splitted[0] + " " + obj_id)
+        elif re.search("update()", args_splitted[1]):
+            obj_args = args_splitted[1].replace("update(", "")[:-1]
+            args = obj_args.split(", ", 1)
+
+            if len(args) < 2:
+                print("** usage: <class name>.update(<id>,"
+                      " <attribute name>, <attribute value>)")
+            elif "{" in args[1] and "}" in args[1] and ":" in args[1]:
+                dic_args = eval(args[1])
+                for key, value in dic_args.items():
+                    if type(value) is str:
+                        a = f"{args_splitted[0]} {args[0]} {key} \"{value}\""
+                    else:
+                        a = f"{args_splitted[0]} {args[0]} {key} {value}"
+                    self.for_update(a)
+            else:
+                obj_args = obj_args.replace(",", "")
+                self.for_update(args_splitted[0] + " " + obj_args)
 
     def for_EOF(self, line):
         return True
