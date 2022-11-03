@@ -13,7 +13,8 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     class_id = {
-        "BaseModel": "base_model"
+        "BaseModel": "base_model",
+        "User": "user"
     }
 
     def do_create(self, line):
