@@ -5,6 +5,7 @@ import cmd
 import models.base_model
 import models
 import models.user
+import models.state
 
 
 class HBNBCommand(cmd.Cmd):

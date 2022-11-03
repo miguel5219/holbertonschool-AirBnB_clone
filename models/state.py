@@ -6,7 +6,7 @@ inherits from class BaseModel"""
 from models.base_model import BaseModel
 
 
-class state(BaseModel):
+class State(BaseModel):
     """ define state
 
         attribute:
