@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
 
         read_line = line.split(" ")
         if read_line[0] not in [*HBNBCommand.class_id.keys(), '']:
-            print("** class doesn'texist **")
+            print("** class doesn't exist **")
         else:
             list_print = []
             for value in models.storage._FileStorage__objects.values():
