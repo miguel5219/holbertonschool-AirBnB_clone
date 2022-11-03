@@ -39,7 +39,7 @@ class FileStorage:
             the JSON file
         """
         new_dict = {k: v.to_dict() for k, v in self.all().items()}
-        with open(FileStorage.__file_path, mode="w", encoding="UTF-8") as f:
+        with open(FileStorage.__file_path, mode="w+", encoding="UTF-8") as f:
             f.write(json.dumps(new_dict))
 
     def reload(self):
