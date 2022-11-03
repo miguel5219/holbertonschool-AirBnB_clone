@@ -6,6 +6,7 @@ import models.base_model
 import models
 import models.user
 import models.state
+import models.city
 
 
 class HBNBCommand(cmd.Cmd):
@@ -15,7 +16,8 @@ class HBNBCommand(cmd.Cmd):
 
     class_id = {
         "BaseModel": "base_model",
-        "User": "user"
+        "User": "user",
+        "City": "city"
     }
 
     def do_create(self, line):
