@@ -15,6 +15,10 @@ class TestsFileStorage(unittest.TestCase):
         self.file1 = FileStorage()
         self.obj1 = BaseModel()
 
+    def test_new(self):
+        self.assertTrue(self.file1._FileStorage__objects.get(
+            f"BaseModel.{self.obj1.id}"))
+
     def test_file_path(self):
         self.assertTrue(self.file1.Filestorage__file_path == "file.json")
 
