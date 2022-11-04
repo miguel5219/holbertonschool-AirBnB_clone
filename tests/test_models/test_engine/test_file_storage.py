@@ -3,16 +3,35 @@
 This file is an unittest for class FileStore
 '''
 import unittest
+import json
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
-from models import storage
+import os
 
 
 class TestsFileStorage(unittest.TestCase):
 
-    def testFileStorage(self):
-        dictOne = FileStorage.all(self)
-        self.assertIsInstance(dictOne, dict)
-        self.assertEqual(len(dictOne), 0)
-        instanceBase = BaseModel()
-        self.assertGreater(len(dictOne), 0)
+    def setUp(self):
+        self.file1 = FileStorage()
+        self.obj1 = BaseModel()
+
+    def test_file_path(self):
+        self.assertTrue(self.file1.Filestorage__file_path == "file.json")
+
+    def test_all(self):
+        self.assertTrue(self.file1.all().get(f"BaseModel.{self.obj1.id}"))
+
+    def test_save(self):
+        self.obj1.save()
+        self.assertTrue(self.file1._FileStorage__objects.get(
+            f"BaseModel.{self.obj1,id}"))
+
+    def test_reload(self):
+
+        if os.path.exists('file.json'):
+            self.file_1.reload()
+            self.assertEqual(len(self.file_1._FileStorage__objects), 0)
+
+
+if __name__ == '__main__':
+    unittest.main()
