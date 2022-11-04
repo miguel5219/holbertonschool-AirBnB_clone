@@ -29,8 +29,8 @@ class TestsFileStorage(unittest.TestCase):
     def test_reload(self):
 
         if os.path.exists('file.json'):
-            self.file_1.reload()
-            self.assertEqual(len(self.file_1._FileStorage__objects), 0)
+            self.file1.reload()
+            self.assertEqual(len(self.file1._FileStorage__objects), 0)
 
 
 if __name__ == '__main__':
