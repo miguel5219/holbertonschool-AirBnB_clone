@@ -23,7 +23,8 @@ class HBNBCommand(cmd.Cmd):
         "City": "city",
         "Amenity": "amenity",
         "Place": "place",
-        "Review": "review"
+        "Review": "review",
+        "State": "state"
     }
 
     def do_create(self, line):
