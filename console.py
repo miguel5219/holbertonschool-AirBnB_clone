@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
         """ created a new instance of BaseModel """
 
         read_line = line.split(" ")
-        if  read_line == ['']:
+        if read_line == ['']:
             print("** class name missing **")
         elif read_line[0] not in HBNBCommand.class_id.keys():
             print("** class doesn't exist **")
