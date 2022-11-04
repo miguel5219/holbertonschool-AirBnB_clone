@@ -12,4 +12,4 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(review, 'name'))
         self.assertEqual(review.name, "")
         review.name = "mirador de san felix"
-        self.assertDictEqual(review.name, "mirador de san felix")
+        self.assertEqual(review.name, "mirador de san felix")
