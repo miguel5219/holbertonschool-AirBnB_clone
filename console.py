@@ -11,6 +11,7 @@ import models.amenity
 import models.place
 import models.review
 
+
 class HBNBCommand(cmd.Cmd):
     """ class to implements a basic prompt to handle objects"""
 
