@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ module contains the class city that
-inherits from class BaseModel 
+inherits from class BaseModel
 """
 
 

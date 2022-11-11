@@ -12,7 +12,6 @@ import models.place
 import models.review
 
 
-
 class HBNBCommand(cmd.Cmd):
     """ class to implements a basic prompt to handle objects"""
 
@@ -24,14 +23,15 @@ class HBNBCommand(cmd.Cmd):
         "City": "city",
         "Amenity": "amenity",
         "Place": "place",
-        "Review": "review"
+        "Review": "review",
+        "State": "state"
     }
 
     def do_create(self, line):
         """ created a new instance of BaseModel """
 
         read_line = line.split(" ")
-        if  read_line == ['']:
+        if read_line == ['']:
             print("** class name missing **")
         elif read_line[0] not in HBNBCommand.class_id.keys():
             print("** class doesn't exist **")
